@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIU Virtual Demo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#f6f8fd;
+  overflow-x:hidden;
+}
+
+.phone{
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  background:#f6f8fd;
+  padding-bottom:40px;
+}
+
+.header{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:42px 22px 0;
+  position:relative;
+  z-index:5;
+}
+
+.back{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:42px;
+  color:#ff3333;
+  font-weight:700;
+}
+
+.title{
+  font-family:'Oswald',sans-serif;
+  font-size:36px;
+  font-weight:700;
+}
+
+.clock{
+  width:max-content;
+  margin:170px auto 0;
+  padding:16px 58px;
+  border-radius:18px;
+  background:#dcd8ff;
+  font-size:60px;
+  position:relative;
+  z-index:5;
+}
+
+.date{
+  margin-top:28px;
+  text-align:center;
+  font-size:29px;
+  color:#4d5a70;
+  position:relative;
+  z-index:5;
+}
+
+.photo{
+  width:165px;
+  height:165px;
+  border-radius:50%;
+  overflow:hidden;
+  margin:115px auto 0;
+  background:#ddd;
+  position:relative;
+  z-index:5;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* NUBES */
+.cloud{
+  position:absolute;
+  width:140px;
+  height:45px;
+  z-index:2;
+  opacity:.75;
+  animation:moveClouds linear infinite;
+}
+
+.cloud::before{
+  content:"";
+  position:absolute;
+  bottom:0;
+  width:140px;
+  height:24px;
+  background:#c2caff;
+  border-radius:40px;
+}
+
+.cloud::after{
+  content:"";
+  position:absolute;
+  bottom:8px;
+  left:42px;
+  width:66px;
+  height:54px;
+  background:#c2caff;
+  border-radius:50%;
+  box-shadow:
+    -45px 17px 0 -12px #c2caff,
+    48px 15px 0 -14px #c2caff;
+}
+
+.cloud.one{top:690px;animation-duration:20s}
+.cloud.two{top:760px;transform:scale(.55);animation-duration:25s;animation-delay:-8s}
+.cloud.three{top:610px;transform:scale(.45);animation-duration:28s;animation-delay:-15s}
+
+@keyframes moveClouds{
+  from{left:110%}
+  to{left:-220px}
+}
+
+/* FONDO MORADO DE ESTRUCTURAS */
+.structures{
+  position:absolute;
+  top:820px;
+  left:0;
+  width:100%;
+  height:260px;
+  z-index:1;
+  opacity:.34;
+  overflow:hidden;
+}
+
+.structure-svg{
+  width:100%;
+  height:100%;
+}
+
+/* TARJETA */
+.card{
+  width:92%;
+  margin:185px auto 0;
+  background:white;
+  border-radius:18px;
+  padding:48px 18px 42px;
+  text-align:center;
+  position:relative;
+  z-index:4;
+  box-shadow:0 4px 14px rgba(0,0,0,.04);
+  overflow:hidden;
+}
+
+.demo{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:64px;
+  font-weight:900;
+  color:rgba(255,0,0,.045);
+  transform:rotate(-20deg);
+  pointer-events:none;
+}
+
+.name{
+  font-family:'Oswald',sans-serif;
+  font-size:45px;
+  line-height:1.05;
+  letter-spacing:2px;
+  color:#ff3f3f;
+  text-transform:uppercase;
+}
+
+.label{
+  margin-top:20px;
+  font-size:22px;
+  color:#111;
+}
+
+.value{
+  font-size:28px;
+  font-weight:800;
+  color:#465266;
+}
+
+.career{
+  margin-top:44px;
+  font-size:27px;
+  font-weight:800;
+  color:#465266;
+}
+
+.campus{
+  margin-top:28px;
+  font-size:24px;
+}
+
+@media(max-width:430px){
+  .clock{font-size:52px;padding:14px 45px}
+  .name{font-size:38px}
+  .card{margin-top:170px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="phone">
+
+  <div class="header">
+    <div class="back">‹</div>
+    <div class="title">TIU VIRTUAL</div>
+  </div>
+
+  <div class="clock" id="clock">00:00:00</div>
+  <div class="date" id="date">Lunes, 01 Jun 2026</div>
+
+  <div class="photo">
+    <img id="studentPhoto" src="foto.jpg" alt="Foto">
+  </div>
+
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+  <div class="cloud three"></div>
+
+  <div class="structures">
+    <svg class="structure-svg" viewBox="0 0 430 260" preserveAspectRatio="none">
+      <g fill="#aeb9ff">
+
+        <!-- fondo inferior -->
+        <rect x="0" y="150" width="430" height="110" opacity=".28"/>
+
+        <!-- estructura izquierda tipo arco -->
+        <circle cx="-18" cy="160" r="78" fill="none" stroke="#aeb9ff" stroke-width="16"/>
+        <circle cx="-18" cy="160" r="45" fill="none" stroke="#aeb9ff" stroke-width="8"/>
+        <line x1="0" y1="105" x2="44" y2="218" stroke="#aeb9ff" stroke-width="7"/>
+        <line x1="-65" y1="135" x2="55" y2="190" stroke="#aeb9ff" stroke-width="6"/>
+
+        <!-- edificio central -->
+        <rect x="160" y="95" width="112" height="90" rx="4"/>
+        <rect x="145" y="118" width="142" height="67" rx="3"/>
+        <polygon points="140,95 290,95 270,75 160,75"/>
+        <polygon points="160,75 270,75 247,57 183,57"/>
+
+        <!-- columnas -->
+        <rect x="170" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
+        <rect x="194" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
+        <rect x="218" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
+        <rect x="242" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
+
+        <!-- círculo logo -->
+        <circle cx="215" cy="78" r="28" fill="#8795f0"/>
+        <text x="215" y="88" text-anchor="middle" font-size="30" fill="white" font-family="Arial">⏻</text>
+
+        <!-- edificios laterales -->
+        <rect x="300" y="135" width="95" height="95" rx="3" opacity=".65"/>
+        <rect x="315" y="120" width="65" height="25" rx="2" opacity=".65"/>
+        <rect x="310" y="153" width="14" height="45" fill="#f6f8fd" opacity=".45"/>
+        <rect x="335" y="153" width="14" height="45" fill="#f6f8fd" opacity=".45"/>
+        <rect x="360" y="153" width="14" height="45" fill="#f6f8fd" opacity=".45"/>
+
+        <rect x="35" y="142" width="85" height="90" rx="3" opacity=".55"/>
+        <rect x="48" y="128" width="58" height="22" rx="2" opacity=".55"/>
+        <rect x="50" y="160" width="12" height="42" fill="#f6f8fd" opacity=".45"/>
+        <rect x="74" y="160" width="12" height="42" fill="#f6f8fd" opacity=".45"/>
+        <rect x="98" y="160" width="12" height="42" fill="#f6f8fd" opacity=".45"/>
+
+      </g>
+    </svg>
+  </div>
+
+  <div class="card">
+    <div class="demo">DEMO</div>
+
+    <div class="name" id="displayName"></div>
+
+    <div class="label">Código de alumno:</div>
+    <div class="value" id="studentCode"></div>
+
+    <div class="label">ID Banner:</div>
+    <div class="value" id="bannerId"></div>
+
+    <div class="career">ADM. Y GERENCIA DEL EMPREND.</div>
+    <div class="campus">📍 Campus San Miguel</div>
+  </div>
+
+</div>
+
+<script>
+const alumno = {
+  nombres:"Johan Omar",
+  apellidoPaterno:"Carranza",
+  apellidoMaterno:"Huaman",
+  codigo:"U202011606",
+  banner:"N00881710",
+  foto:"foto.jpg"
+};
+
+function ocultarApellido(apellido){
+  return apellido.charAt(0).toUpperCase() + "***";
+}
+
+function ocultarBanner(id){
+  return id.slice(0,5) + "***" + id.slice(-1);
+}
+
+function cargarDatos(){
+  document.getElementById("displayName").innerText =
+    `${alumno.nombres} ${ocultarApellido(alumno.apellidoPaterno)} ${ocultarApellido(alumno.apellidoMaterno)}`;
+
+  document.getElementById("studentCode").innerText = alumno.codigo;
+  document.getElementById("bannerId").innerText = ocultarBanner(alumno.banner);
+  document.getElementById("studentPhoto").src = alumno.foto;
+}
+
+function actualizarHora(){
+  const ahora = new Date();
+
+  const hora = new Intl.DateTimeFormat("es-PE", {
+    timeZone:"America/Lima",
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    hour12:false
+  }).format(ahora);
+
+  const fecha = new Intl.DateTimeFormat("es-PE", {
+    timeZone:"America/Lima",
+    weekday:"long",
+    day:"2-digit",
+    month:"short",
+    year:"numeric"
+  }).format(ahora);
+
+  document.getElementById("clock").innerText = hora;
+  document.getElementById("date").innerText =
+    fecha.charAt(0).toUpperCase() + fecha.slice(1);
+}
+
+cargarDatos();
+actualizarHora();
+setInterval(actualizarHora,1000);
+</script>
+
+</body>
+</html>
