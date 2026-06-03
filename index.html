@@ -30,93 +30,17 @@ body{
   position:relative;
   overflow:hidden;
   background:#f7f9ff url("fondo-tiu.svg") center bottom/cover no-repeat;
-  padding:calc(11px + env(safe-area-inset-top)) 18px calc(15px + env(safe-area-inset-bottom));
+  padding:calc(18px + env(safe-area-inset-top)) 18px calc(15px + env(safe-area-inset-bottom));
   display:flex;
   flex-direction:column;
   align-items:center;
-}
-
-.status-bar{
-  width:100%;
-  min-height:30px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 34px;
-  color:#07090d;
-  font-size:18px;
-  font-weight:800;
-  line-height:1;
-  position:relative;
-  z-index:8;
-}
-
-.status-right{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.signal{
-  width:25px;
-  height:18px;
-  display:flex;
-  align-items:flex-end;
-  gap:3px;
-}
-
-.signal span{
-  width:4px;
-  border-radius:4px;
-  background:#07090d;
-  display:block;
-}
-
-.signal span:nth-child(1){height:7px}
-.signal span:nth-child(2){height:11px}
-.signal span:nth-child(3){height:15px}
-.signal span:nth-child(4){height:18px}
-
-.network{
-  font-size:18px;
-  font-weight:800;
-}
-
-.battery{
-  width:31px;
-  height:16px;
-  border:2px solid #07090d;
-  border-radius:5px;
-  position:relative;
-  padding:2px;
-}
-
-.battery::before{
-  content:"";
-  position:absolute;
-  right:-5px;
-  top:4px;
-  width:3px;
-  height:6px;
-  background:#07090d;
-  border-radius:0 2px 2px 0;
-}
-
-.battery::after{
-  content:"";
-  display:block;
-  width:100%;
-  height:100%;
-  border-radius:2px;
-  background:#07090d;
 }
 
 .header{
   width:100%;
   display:flex;
   align-items:center;
-  gap:22px;
-  margin-top:20px;
+  gap:21px;
   position:relative;
   z-index:7;
   flex:0 0 auto;
@@ -157,7 +81,7 @@ body{
 
 .clock{
   width:max-content;
-  margin-top:clamp(86px,13vh,118px);
+  margin-top:clamp(76px,12vh,104px);
   padding:11px 39px 13px;
   border-radius:12px;
   background:#d8d3ff;
@@ -172,7 +96,7 @@ body{
 }
 
 .date{
-  margin-top:26px;
+  margin-top:25px;
   text-align:center;
   font-size:clamp(19px,5vw,24px);
   font-weight:400;
@@ -185,7 +109,7 @@ body{
 .photo{
   width:clamp(128px,37vw,158px);
   height:clamp(128px,37vw,158px);
-  margin-top:clamp(78px,11vh,105px);
+  margin-top:clamp(74px,10.5vh,98px);
   border-radius:50%;
   overflow:hidden;
   background:#e3e2ea;
@@ -319,10 +243,9 @@ body{
 }
 
 @media(max-height:760px){
-  .header{margin-top:14px}
-  .clock{margin-top:clamp(44px,8vh,78px)}
+  .clock{margin-top:clamp(48px,8vh,76px)}
   .date{margin-top:18px}
-  .photo{margin-top:clamp(46px,8vh,76px);width:120px;height:120px}
+  .photo{margin-top:clamp(46px,8vh,72px);width:120px;height:120px}
   .card{padding:24px 17px 26px}
   .label{margin-top:13px}
   .career{margin-top:23px}
@@ -330,11 +253,11 @@ body{
 }
 
 @media(max-height:650px){
-  .status-bar{min-height:24px;font-size:15px;padding:0 28px}
-  .header{margin-top:9px;gap:16px}
+  .phone{padding-top:12px}
+  .header{gap:16px}
   .back{width:36px;height:36px}
   .title{font-size:27px}
-  .clock{margin-top:28px;font-size:37px;padding:9px 32px;border-radius:11px}
+  .clock{margin-top:30px;font-size:37px;padding:9px 32px;border-radius:11px}
   .date{margin-top:13px;font-size:17px}
   .photo{margin-top:31px;width:94px;height:94px}
   .card{padding:18px 14px 18px;border-radius:14px}
@@ -350,15 +273,6 @@ body{
 <body>
 
 <div class="phone">
-
-  <div class="status-bar">
-    <div id="statusTime">9:26</div>
-    <div class="status-right">
-      <div class="signal" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-      <div class="network">5G</div>
-      <div class="battery" aria-hidden="true"></div>
-    </div>
-  </div>
 
   <div class="header">
     <div class="back" aria-hidden="true"></div>
@@ -427,13 +341,6 @@ function actualizarHora(){
     hour12:false
   }).format(ahora);
 
-  const horaEstado = new Intl.DateTimeFormat("es-PE", {
-    timeZone:"America/Lima",
-    hour:"numeric",
-    minute:"2-digit",
-    hour12:false
-  }).format(ahora);
-
   const fecha = new Intl.DateTimeFormat("es-PE", {
     timeZone:"America/Lima",
     weekday:"long",
@@ -442,7 +349,6 @@ function actualizarHora(){
     year:"numeric"
   }).format(ahora);
 
-  document.getElementById("statusTime").innerText = horaEstado;
   document.getElementById("clock").innerText = hora;
   document.getElementById("date").innerText =
     fecha.charAt(0).toUpperCase() + fecha.slice(1);
