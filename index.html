@@ -25,12 +25,15 @@ body{
 .phone{
   width:min(100vw,430px);
   height:100dvh;
-  min-height:568px;
   margin:0 auto;
   position:relative;
   overflow:hidden;
-  background:#f7f9ff url("fondo-tiu.svg") center bottom/cover no-repeat;
-  padding:calc(18px + env(safe-area-inset-top)) 18px calc(15px + env(safe-area-inset-bottom));
+  background-color:#f7f9ff;
+  background-image:url("fondo-tiu.svg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center calc(100% - clamp(76px,12vh,112px));
+  padding:calc(16px + env(safe-area-inset-top)) 18px calc(10px + env(safe-area-inset-bottom));
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -40,15 +43,15 @@ body{
   width:100%;
   display:flex;
   align-items:center;
-  gap:21px;
+  gap:19px;
   position:relative;
   z-index:7;
   flex:0 0 auto;
 }
 
 .back{
-  width:40px;
-  height:40px;
+  width:38px;
+  height:38px;
   border-radius:50%;
   background:white;
   display:flex;
@@ -61,8 +64,8 @@ body{
 
 .back::before{
   content:"";
-  width:12px;
-  height:12px;
+  width:11px;
+  height:11px;
   border-left:5px solid #ff1f2b;
   border-bottom:5px solid #ff1f2b;
   transform:rotate(45deg);
@@ -72,7 +75,7 @@ body{
 
 .title{
   font-family:'Oswald',sans-serif;
-  font-size:31px;
+  font-size:29px;
   font-weight:700;
   letter-spacing:0;
   line-height:1;
@@ -81,12 +84,12 @@ body{
 
 .clock{
   width:max-content;
-  margin-top:clamp(76px,12vh,104px);
-  padding:11px 39px 13px;
+  margin-top:clamp(46px,8.4vh,78px);
+  padding:10px clamp(31px,9vw,39px) 12px;
   border-radius:12px;
   background:#d8d3ff;
   color:#05060a;
-  font-size:clamp(43px,13vw,56px);
+  font-size:clamp(39px,11.5vw,52px);
   font-weight:400;
   line-height:1;
   letter-spacing:0;
@@ -96,9 +99,9 @@ body{
 }
 
 .date{
-  margin-top:25px;
+  margin-top:clamp(14px,2.7vh,22px);
   text-align:center;
-  font-size:clamp(19px,5vw,24px);
+  font-size:clamp(17px,4.4vw,21px);
   font-weight:400;
   line-height:1.2;
   color:#46566a;
@@ -107,9 +110,9 @@ body{
 }
 
 .photo{
-  width:clamp(128px,37vw,158px);
-  height:clamp(128px,37vw,158px);
-  margin-top:clamp(74px,10.5vh,98px);
+  width:clamp(108px,32vw,140px);
+  height:clamp(108px,32vw,140px);
+  margin-top:clamp(40px,7.8vh,70px);
   border-radius:50%;
   overflow:hidden;
   background:#e3e2ea;
@@ -170,9 +173,9 @@ body{
 .card{
   width:100%;
   margin:auto 0 0;
-  background:rgba(255,255,255,.96);
+  background:rgba(255,255,255,.94);
   border-radius:15px;
-  padding:clamp(29px,4.4vh,39px) 18px clamp(28px,4.4vh,40px);
+  padding:clamp(21px,3.5vh,30px) 16px clamp(20px,3.5vh,30px);
   text-align:center;
   position:relative;
   z-index:6;
@@ -196,42 +199,42 @@ body{
 
 .name{
   font-family:'Oswald',sans-serif;
-  font-size:clamp(35px,9.8vw,43px);
+  font-size:clamp(31px,8.7vw,39px);
   line-height:1;
   font-weight:700;
-  letter-spacing:1.8px;
+  letter-spacing:1.5px;
   color:#ff3f46;
   text-transform:uppercase;
   overflow-wrap:anywhere;
 }
 
 .label{
-  margin-top:18px;
-  font-size:clamp(17px,4.7vw,22px);
+  margin-top:clamp(10px,1.8vh,15px);
+  font-size:clamp(14px,3.9vw,18px);
   line-height:1.1;
   font-weight:400;
   color:#111318;
 }
 
 .value{
-  margin-top:3px;
-  font-size:clamp(20px,5.5vw,26px);
+  margin-top:2px;
+  font-size:clamp(17px,4.8vw,22px);
   line-height:1.05;
   font-weight:800;
   color:#465266;
 }
 
 .career{
-  margin-top:32px;
-  font-size:clamp(20px,5.5vw,25px);
+  margin-top:clamp(17px,2.7vh,26px);
+  font-size:clamp(17px,4.8vw,22px);
   line-height:1.12;
   font-weight:800;
   color:#465266;
 }
 
 .campus{
-  margin-top:21px;
-  font-size:clamp(18px,4.7vw,22px);
+  margin-top:clamp(12px,2vh,18px);
+  font-size:clamp(15px,4.2vw,19px);
   line-height:1.15;
   font-weight:400;
   color:#16191f;
@@ -239,33 +242,34 @@ body{
 
 .pin{
   color:#e53c43;
-  margin-right:10px;
+  margin-right:9px;
 }
 
 @media(max-height:760px){
-  .clock{margin-top:clamp(48px,8vh,76px)}
-  .date{margin-top:18px}
-  .photo{margin-top:clamp(46px,8vh,72px);width:120px;height:120px}
-  .card{padding:24px 17px 26px}
-  .label{margin-top:13px}
-  .career{margin-top:23px}
-  .campus{margin-top:16px}
+  .phone{background-position:center calc(100% - 84px)}
+  .clock{margin-top:clamp(34px,6.3vh,52px)}
+  .date{margin-top:13px}
+  .photo{margin-top:clamp(30px,6vh,46px);width:106px;height:106px}
+  .card{padding:19px 15px 20px}
+  .label{margin-top:10px}
+  .career{margin-top:17px}
+  .campus{margin-top:12px}
 }
 
 @media(max-height:650px){
-  .phone{padding-top:12px}
-  .header{gap:16px}
-  .back{width:36px;height:36px}
-  .title{font-size:27px}
-  .clock{margin-top:30px;font-size:37px;padding:9px 32px;border-radius:11px}
-  .date{margin-top:13px;font-size:17px}
-  .photo{margin-top:31px;width:94px;height:94px}
-  .card{padding:18px 14px 18px;border-radius:14px}
-  .name{font-size:28px;letter-spacing:1.2px}
-  .label{font-size:14px;margin-top:9px}
-  .value{font-size:17px}
-  .career{font-size:16px;margin-top:14px}
-  .campus{font-size:15px;margin-top:10px}
+  .phone{padding-top:10px;background-position:center calc(100% - 68px)}
+  .header{gap:15px}
+  .back{width:34px;height:34px}
+  .title{font-size:25px}
+  .clock{margin-top:22px;font-size:34px;padding:8px 28px;border-radius:11px}
+  .date{margin-top:10px;font-size:15px}
+  .photo{margin-top:22px;width:82px;height:82px}
+  .card{padding:14px 12px 15px;border-radius:14px}
+  .name{font-size:25px;letter-spacing:1px}
+  .label{font-size:13px;margin-top:7px}
+  .value{font-size:16px}
+  .career{font-size:14px;margin-top:11px}
+  .campus{font-size:13px;margin-top:8px}
 }
 </style>
 </head>
