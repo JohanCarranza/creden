@@ -29,7 +29,7 @@ body{
   margin:0 auto;
   position:relative;
   overflow:hidden;
-  background:#f6f8fd;
+  background:#f6f8fd url("fondo-tiu.svg") center bottom/cover no-repeat;
   padding:calc(14px + env(safe-area-inset-top)) 16px calc(12px + env(safe-area-inset-bottom));
   display:flex;
   flex-direction:column;
@@ -152,28 +152,12 @@ body{
   to{left:-220px}
 }
 
-/* FONDO MORADO DE ESTRUCTURAS */
-.structures{
-  position:absolute;
-  left:0;
-  bottom:clamp(168px,27vh,230px);
-  width:100%;
-  height:clamp(150px,25vh,220px);
-  z-index:1;
-  opacity:.28;
-  overflow:hidden;
-}
-
-.structure-svg{
-  width:100%;
-  height:100%;
-}
-
 /* TARJETA */
 .card{
   width:100%;
   margin:auto 0 0;
-  background:white;
+  background:rgba(255,255,255,.91);
+  border:1px solid rgba(255,255,255,.72);
   border-radius:18px;
   padding:clamp(18px,3vh,26px) 16px clamp(17px,3vh,24px);
   text-align:center;
@@ -182,6 +166,7 @@ body{
   box-shadow:0 8px 24px rgba(42,49,85,.08);
   overflow:hidden;
   flex:0 0 auto;
+  backdrop-filter:blur(3px);
 }
 
 .demo{
@@ -280,52 +265,6 @@ body{
   <div class="cloud one"></div>
   <div class="cloud two"></div>
   <div class="cloud three"></div>
-
-  <div class="structures">
-    <svg class="structure-svg" viewBox="0 0 430 260" preserveAspectRatio="none">
-      <g fill="#aeb9ff">
-
-        <!-- fondo inferior -->
-        <rect x="0" y="150" width="430" height="110" opacity=".28"/>
-
-        <!-- estructura izquierda tipo arco -->
-        <circle cx="-18" cy="160" r="78" fill="none" stroke="#aeb9ff" stroke-width="16"/>
-        <circle cx="-18" cy="160" r="45" fill="none" stroke="#aeb9ff" stroke-width="8"/>
-        <line x1="0" y1="105" x2="44" y2="218" stroke="#aeb9ff" stroke-width="7"/>
-        <line x1="-65" y1="135" x2="55" y2="190" stroke="#aeb9ff" stroke-width="6"/>
-
-        <!-- edificio central -->
-        <rect x="160" y="95" width="112" height="90" rx="4"/>
-        <rect x="145" y="118" width="142" height="67" rx="3"/>
-        <polygon points="140,95 290,95 270,75 160,75"/>
-        <polygon points="160,75 270,75 247,57 183,57"/>
-
-        <!-- columnas -->
-        <rect x="170" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
-        <rect x="194" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
-        <rect x="218" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
-        <rect x="242" y="125" width="10" height="60" fill="#f6f8fd" opacity=".55"/>
-
-        <!-- círculo logo -->
-        <circle cx="215" cy="78" r="28" fill="#8795f0"/>
-        <text x="215" y="88" text-anchor="middle" font-size="30" fill="white" font-family="Arial">⏻</text>
-
-        <!-- edificios laterales -->
-        <rect x="300" y="135" width="95" height="95" rx="3" opacity=".65"/>
-        <rect x="315" y="120" width="65" height="25" rx="2" opacity=".65"/>
-        <rect x="310" y="153" width="14" height="45" fill="#f6f8fd" opacity=".45"/>
-        <rect x="335" y="153" width="14" height="45" fill="#f6f8fd" opacity=".45"/>
-        <rect x="360" y="153" width="14" height="45" fill="#f6f8fd" opacity=".45"/>
-
-        <rect x="35" y="142" width="85" height="90" rx="3" opacity=".55"/>
-        <rect x="48" y="128" width="58" height="22" rx="2" opacity=".55"/>
-        <rect x="50" y="160" width="12" height="42" fill="#f6f8fd" opacity=".45"/>
-        <rect x="74" y="160" width="12" height="42" fill="#f6f8fd" opacity=".45"/>
-        <rect x="98" y="160" width="12" height="42" fill="#f6f8fd" opacity=".45"/>
-
-      </g>
-    </svg>
-  </div>
 
   <div class="card">
     <div class="demo"></div>
