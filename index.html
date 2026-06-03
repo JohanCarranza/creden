@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>TIU Virtual Demo</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -29,78 +29,169 @@ body{
   margin:0 auto;
   position:relative;
   overflow:hidden;
-  background:#f6f8fd url("fondo-tiu.svg") center bottom/cover no-repeat;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(12px + env(safe-area-inset-bottom));
+  background:#f7f9ff url("fondo-tiu.svg") center bottom/cover no-repeat;
+  padding:calc(11px + env(safe-area-inset-top)) 18px calc(15px + env(safe-area-inset-bottom));
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:clamp(8px,1.35vh,14px);
+}
+
+.status-bar{
+  width:100%;
+  min-height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 34px;
+  color:#07090d;
+  font-size:18px;
+  font-weight:800;
+  line-height:1;
+  position:relative;
+  z-index:8;
+}
+
+.status-right{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.signal{
+  width:25px;
+  height:18px;
+  display:flex;
+  align-items:flex-end;
+  gap:3px;
+}
+
+.signal span{
+  width:4px;
+  border-radius:4px;
+  background:#07090d;
+  display:block;
+}
+
+.signal span:nth-child(1){height:7px}
+.signal span:nth-child(2){height:11px}
+.signal span:nth-child(3){height:15px}
+.signal span:nth-child(4){height:18px}
+
+.network{
+  font-size:18px;
+  font-weight:800;
+}
+
+.battery{
+  width:31px;
+  height:16px;
+  border:2px solid #07090d;
+  border-radius:5px;
+  position:relative;
+  padding:2px;
+}
+
+.battery::before{
+  content:"";
+  position:absolute;
+  right:-5px;
+  top:4px;
+  width:3px;
+  height:6px;
+  background:#07090d;
+  border-radius:0 2px 2px 0;
+}
+
+.battery::after{
+  content:"";
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:2px;
+  background:#07090d;
 }
 
 .header{
   width:100%;
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:22px;
+  margin-top:20px;
   position:relative;
-  z-index:5;
+  z-index:7;
   flex:0 0 auto;
 }
 
 .back{
-  width:42px;
-  height:42px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   background:white;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:36px;
-  line-height:1;
-  color:#ff3333;
-  font-weight:700;
-  box-shadow:0 4px 14px rgba(42,49,85,.08);
+  color:#ff1f2b;
+  font-size:0;
+  box-shadow:0 5px 16px rgba(39,51,91,.08);
+}
+
+.back::before{
+  content:"";
+  width:12px;
+  height:12px;
+  border-left:5px solid #ff1f2b;
+  border-bottom:5px solid #ff1f2b;
+  transform:rotate(45deg);
+  margin-left:5px;
+  border-radius:2px;
 }
 
 .title{
   font-family:'Oswald',sans-serif;
-  font-size:clamp(27px,8vw,34px);
+  font-size:31px;
   font-weight:700;
-  letter-spacing:.2px;
+  letter-spacing:0;
+  line-height:1;
+  color:#111318;
 }
 
 .clock{
   width:max-content;
-  margin:clamp(6px,1.8vh,16px) auto 0;
-  padding:clamp(10px,2.2vh,14px) clamp(30px,10vw,48px);
-  border-radius:18px;
-  background:#dcd8ff;
-  font-size:clamp(38px,12vw,54px);
+  margin-top:clamp(86px,13vh,118px);
+  padding:11px 39px 13px;
+  border-radius:12px;
+  background:#d8d3ff;
+  color:#05060a;
+  font-size:clamp(43px,13vw,56px);
+  font-weight:400;
   line-height:1;
+  letter-spacing:0;
   position:relative;
-  z-index:5;
+  z-index:7;
   white-space:nowrap;
 }
 
 .date{
+  margin-top:26px;
   text-align:center;
-  font-size:clamp(18px,5vw,24px);
+  font-size:clamp(19px,5vw,24px);
+  font-weight:400;
   line-height:1.2;
-  color:#4d5a70;
+  color:#46566a;
   position:relative;
-  z-index:5;
+  z-index:7;
 }
 
 .photo{
-  width:clamp(104px,31vw,132px);
-  height:clamp(104px,31vw,132px);
+  width:clamp(128px,37vw,158px);
+  height:clamp(128px,37vw,158px);
+  margin-top:clamp(78px,11vh,105px);
   border-radius:50%;
   overflow:hidden;
-  background:#ddd;
+  background:#e3e2ea;
   position:relative;
-  z-index:5;
+  z-index:7;
   flex:0 0 auto;
-  box-shadow:0 6px 20px rgba(42,49,85,.12);
 }
 
 .photo img{
@@ -114,8 +205,8 @@ body{
   position:absolute;
   width:140px;
   height:45px;
-  z-index:2;
-  opacity:.55;
+  z-index:3;
+  opacity:.72;
   animation:moveClouds linear infinite;
 }
 
@@ -143,30 +234,27 @@ body{
     48px 15px 0 -14px #c2caff;
 }
 
-.cloud.one{top:49%;animation-duration:20s}
-.cloud.two{top:57%;transform:scale(.55);animation-duration:25s;animation-delay:-8s}
-.cloud.three{top:43%;transform:scale(.45);animation-duration:28s;animation-delay:-15s}
+.cloud.one{top:45%;transform:scale(.48);animation-duration:20s}
+.cloud.two{top:52%;transform:scale(.68);animation-duration:25s;animation-delay:-9s}
+.cloud.three{top:49%;transform:scale(.38);animation-duration:28s;animation-delay:-16s}
 
 @keyframes moveClouds{
   from{left:110%}
   to{left:-220px}
 }
 
-/* TARJETA */
 .card{
   width:100%;
   margin:auto 0 0;
-  background:rgba(255,255,255,.91);
-  border:1px solid rgba(255,255,255,.72);
-  border-radius:18px;
-  padding:clamp(18px,3vh,26px) 16px clamp(17px,3vh,24px);
+  background:rgba(255,255,255,.96);
+  border-radius:15px;
+  padding:clamp(29px,4.4vh,39px) 18px clamp(28px,4.4vh,40px);
   text-align:center;
   position:relative;
-  z-index:4;
-  box-shadow:0 8px 24px rgba(42,49,85,.08);
+  z-index:6;
+  box-shadow:0 8px 24px rgba(42,49,85,.06);
   overflow:hidden;
   flex:0 0 auto;
-  backdrop-filter:blur(3px);
 }
 
 .demo{
@@ -177,71 +265,84 @@ body{
   justify-content:center;
   font-size:52px;
   font-weight:900;
-  color:rgba(255,0,0,.045);
+  color:rgba(255,0,0,.035);
   transform:rotate(-20deg);
   pointer-events:none;
 }
 
 .name{
   font-family:'Oswald',sans-serif;
-  font-size:clamp(28px,8.5vw,36px);
-  line-height:1.02;
-  letter-spacing:1px;
-  color:#ff3f3f;
+  font-size:clamp(35px,9.8vw,43px);
+  line-height:1;
+  font-weight:700;
+  letter-spacing:1.8px;
+  color:#ff3f46;
   text-transform:uppercase;
   overflow-wrap:anywhere;
 }
 
 .label{
-  margin-top:clamp(10px,1.7vh,15px);
-  font-size:clamp(14px,4vw,18px);
-  line-height:1.15;
-  color:#111;
+  margin-top:18px;
+  font-size:clamp(17px,4.7vw,22px);
+  line-height:1.1;
+  font-weight:400;
+  color:#111318;
 }
 
 .value{
-  margin-top:2px;
-  font-size:clamp(18px,5.3vw,24px);
-  line-height:1.1;
+  margin-top:3px;
+  font-size:clamp(20px,5.5vw,26px);
+  line-height:1.05;
   font-weight:800;
   color:#465266;
 }
 
 .career{
-  margin-top:clamp(16px,2.4vh,24px);
-  font-size:clamp(17px,4.8vw,23px);
+  margin-top:32px;
+  font-size:clamp(20px,5.5vw,25px);
   line-height:1.12;
   font-weight:800;
   color:#465266;
 }
 
 .campus{
-  margin-top:clamp(12px,1.8vh,18px);
-  font-size:clamp(16px,4.4vw,21px);
+  margin-top:21px;
+  font-size:clamp(18px,4.7vw,22px);
   line-height:1.15;
+  font-weight:400;
+  color:#16191f;
 }
 
-@media(max-height:700px){
-  .phone{gap:7px;min-height:0}
-  .clock{margin-top:4px}
-  .photo{width:100px;height:100px}
-  .card{padding:16px 14px 15px}
-  .label{margin-top:9px}
-  .career{margin-top:14px}
-  .campus{margin-top:10px}
+.pin{
+  color:#e53c43;
+  margin-right:10px;
 }
 
-@media(max-height:610px){
-  .back{width:38px;height:38px;font-size:32px}
-  .title{font-size:26px}
-  .clock{font-size:36px;padding:9px 28px;border-radius:15px}
-  .date{font-size:17px}
-  .photo{width:82px;height:82px}
-  .name{font-size:27px}
-  .label{font-size:13px;margin-top:7px}
+@media(max-height:760px){
+  .header{margin-top:14px}
+  .clock{margin-top:clamp(44px,8vh,78px)}
+  .date{margin-top:18px}
+  .photo{margin-top:clamp(46px,8vh,76px);width:120px;height:120px}
+  .card{padding:24px 17px 26px}
+  .label{margin-top:13px}
+  .career{margin-top:23px}
+  .campus{margin-top:16px}
+}
+
+@media(max-height:650px){
+  .status-bar{min-height:24px;font-size:15px;padding:0 28px}
+  .header{margin-top:9px;gap:16px}
+  .back{width:36px;height:36px}
+  .title{font-size:27px}
+  .clock{margin-top:28px;font-size:37px;padding:9px 32px;border-radius:11px}
+  .date{margin-top:13px;font-size:17px}
+  .photo{margin-top:31px;width:94px;height:94px}
+  .card{padding:18px 14px 18px;border-radius:14px}
+  .name{font-size:28px;letter-spacing:1.2px}
+  .label{font-size:14px;margin-top:9px}
   .value{font-size:17px}
-  .career{font-size:16px;margin-top:11px}
-  .campus{font-size:15px;margin-top:8px}
+  .career{font-size:16px;margin-top:14px}
+  .campus{font-size:15px;margin-top:10px}
 }
 </style>
 </head>
@@ -250,8 +351,17 @@ body{
 
 <div class="phone">
 
+  <div class="status-bar">
+    <div id="statusTime">9:26</div>
+    <div class="status-right">
+      <div class="signal" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="network">5G</div>
+      <div class="battery" aria-hidden="true"></div>
+    </div>
+  </div>
+
   <div class="header">
-    <div class="back">‹</div>
+    <div class="back" aria-hidden="true"></div>
     <div class="title">TIU VIRTUAL</div>
   </div>
 
@@ -259,7 +369,7 @@ body{
   <div class="date" id="date">Lunes, 01 Jun 2026</div>
 
   <div class="photo">
-    <img id="studentPhoto" src="foto.jpg" alt="Foto">
+    <img id="studentPhoto" src="eduardo.png" alt="Foto de Eduardo">
   </div>
 
   <div class="cloud one"></div>
@@ -278,7 +388,7 @@ body{
     <div class="value" id="bannerId"></div>
 
     <div class="career">ADM. Y GERENCIA DEL EMPREND.</div>
-    <div class="campus">📍 Campus San Miguel</div>
+    <div class="campus"><span class="pin">📍</span>Campus San Miguel</div>
   </div>
 
 </div>
@@ -290,15 +400,11 @@ const alumno = {
   apellidoMaterno:"Serquen",
   codigo:"U202110440",
   banner:"N00981710",
-  foto:"foto.jpg"
+  foto:"eduardo.png"
 };
 
 function ocultarApellido(apellido){
   return apellido.charAt(0).toUpperCase() + "***";
-}
-
-function ocultarBanner(id){
-  return id.slice(0,5) + "***" + id.slice(-1);
 }
 
 function cargarDatos(){
@@ -306,7 +412,7 @@ function cargarDatos(){
     `${alumno.nombres} ${ocultarApellido(alumno.apellidoPaterno)} ${ocultarApellido(alumno.apellidoMaterno)}`;
 
   document.getElementById("studentCode").innerText = alumno.codigo;
-  document.getElementById("bannerId").innerText = ocultarBanner(alumno.banner);
+  document.getElementById("bannerId").innerText = alumno.banner;
   document.getElementById("studentPhoto").src = alumno.foto;
 }
 
@@ -321,6 +427,13 @@ function actualizarHora(){
     hour12:false
   }).format(ahora);
 
+  const horaEstado = new Intl.DateTimeFormat("es-PE", {
+    timeZone:"America/Lima",
+    hour:"numeric",
+    minute:"2-digit",
+    hour12:false
+  }).format(ahora);
+
   const fecha = new Intl.DateTimeFormat("es-PE", {
     timeZone:"America/Lima",
     weekday:"long",
@@ -329,6 +442,7 @@ function actualizarHora(){
     year:"numeric"
   }).format(ahora);
 
+  document.getElementById("statusTime").innerText = horaEstado;
   document.getElementById("clock").innerText = hora;
   document.getElementById("date").innerText =
     fecha.charAt(0).toUpperCase() + fecha.slice(1);
