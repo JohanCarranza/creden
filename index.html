@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>TIU Virtual Demo</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -32,8 +32,8 @@ body{
   background-image:url("fondo-tiu.svg");
   background-repeat:no-repeat;
   background-size:cover;
-  background-position:center calc(100% - clamp(76px,12vh,112px));
-  padding:calc(16px + env(safe-area-inset-top)) 18px calc(10px + env(safe-area-inset-bottom));
+  background-position:center calc(100% - clamp(64px,10vh,96px));
+  padding:calc(16px + env(safe-area-inset-top)) 18px calc(12px + env(safe-area-inset-bottom));
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -43,15 +43,15 @@ body{
   width:100%;
   display:flex;
   align-items:center;
-  gap:19px;
+  gap:18px;
   position:relative;
   z-index:7;
   flex:0 0 auto;
 }
 
 .back{
-  width:38px;
-  height:38px;
+  width:36px;
+  height:36px;
   border-radius:50%;
   background:white;
   display:flex;
@@ -64,18 +64,18 @@ body{
 
 .back::before{
   content:"";
-  width:11px;
-  height:11px;
-  border-left:5px solid #ff1f2b;
-  border-bottom:5px solid #ff1f2b;
+  width:10px;
+  height:10px;
+  border-left:4px solid #ff1f2b;
+  border-bottom:4px solid #ff1f2b;
   transform:rotate(45deg);
-  margin-left:5px;
+  margin-left:4px;
   border-radius:2px;
 }
 
 .title{
   font-family:'Oswald',sans-serif;
-  font-size:29px;
+  font-size:27px;
   font-weight:700;
   letter-spacing:0;
   line-height:1;
@@ -84,7 +84,7 @@ body{
 
 .clock{
   width:max-content;
-  margin-top:clamp(46px,8.4vh,78px);
+  margin-top:clamp(44px,8vh,72px);
   padding:10px clamp(31px,9vw,39px) 12px;
   border-radius:12px;
   background:#d8d3ff;
@@ -99,9 +99,9 @@ body{
 }
 
 .date{
-  margin-top:clamp(14px,2.7vh,22px);
+  margin-top:clamp(13px,2.5vh,20px);
   text-align:center;
-  font-size:clamp(17px,4.4vw,21px);
+  font-size:clamp(16px,4.1vw,20px);
   font-weight:400;
   line-height:1.2;
   color:#46566a;
@@ -110,9 +110,9 @@ body{
 }
 
 .photo{
-  width:clamp(108px,32vw,140px);
-  height:clamp(108px,32vw,140px);
-  margin-top:clamp(40px,7.8vh,70px);
+  width:clamp(106px,31vw,136px);
+  height:clamp(106px,31vw,136px);
+  margin-top:clamp(35px,7vh,62px);
   border-radius:50%;
   overflow:hidden;
   background:#e3e2ea;
@@ -161,9 +161,9 @@ body{
     48px 15px 0 -14px #c2caff;
 }
 
-.cloud.one{top:45%;transform:scale(.48);animation-duration:20s}
-.cloud.two{top:52%;transform:scale(.68);animation-duration:25s;animation-delay:-9s}
-.cloud.three{top:49%;transform:scale(.38);animation-duration:28s;animation-delay:-16s}
+.cloud.one{top:39%;transform:scale(.45);animation-duration:12s}
+.cloud.two{top:45%;transform:scale(.63);animation-duration:14s;animation-delay:-6s}
+.cloud.three{top:47%;transform:scale(.35);animation-duration:13s;animation-delay:-10s}
 
 @keyframes moveClouds{
   from{left:110%}
@@ -171,15 +171,15 @@ body{
 }
 
 .card{
-  width:100%;
+  width:min(94%,394px);
   margin:auto 0 0;
-  background:rgba(255,255,255,.94);
-  border-radius:15px;
-  padding:clamp(21px,3.5vh,30px) 16px clamp(20px,3.5vh,30px);
+  background:rgba(255,255,255,.95);
+  border-radius:13px;
+  padding:clamp(16px,2.8vh,23px) 14px clamp(16px,2.8vh,24px);
   text-align:center;
   position:relative;
   z-index:6;
-  box-shadow:0 8px 24px rgba(42,49,85,.06);
+  box-shadow:0 7px 20px rgba(42,49,85,.055);
   overflow:hidden;
   flex:0 0 auto;
 }
@@ -192,84 +192,90 @@ body{
   justify-content:center;
   font-size:52px;
   font-weight:900;
-  color:rgba(255,0,0,.035);
+  color:rgba(255,0,0,.03);
   transform:rotate(-20deg);
   pointer-events:none;
 }
 
 .name{
   font-family:'Oswald',sans-serif;
-  font-size:clamp(31px,8.7vw,39px);
+  font-size:clamp(28px,7.7vw,35px);
   line-height:1;
-  font-weight:700;
-  letter-spacing:1.5px;
+  font-weight:600;
+  letter-spacing:1.2px;
   color:#ff3f46;
   text-transform:uppercase;
   overflow-wrap:anywhere;
 }
 
 .label{
-  margin-top:clamp(10px,1.8vh,15px);
-  font-size:clamp(14px,3.9vw,18px);
-  line-height:1.1;
+  margin-top:clamp(8px,1.45vh,12px);
+  font-size:clamp(13px,3.5vw,16px);
+  line-height:1.08;
   font-weight:400;
   color:#111318;
 }
 
 .value{
-  margin-top:2px;
-  font-size:clamp(17px,4.8vw,22px);
+  margin-top:1px;
+  font-size:clamp(15px,4.1vw,19px);
   line-height:1.05;
-  font-weight:800;
+  font-weight:700;
   color:#465266;
 }
 
 .career{
-  margin-top:clamp(17px,2.7vh,26px);
-  font-size:clamp(17px,4.8vw,22px);
-  line-height:1.12;
-  font-weight:800;
+  margin-top:clamp(13px,2.1vh,20px);
+  font-size:clamp(15px,4.1vw,19px);
+  line-height:1.1;
+  font-weight:700;
   color:#465266;
 }
 
 .campus{
-  margin-top:clamp(12px,2vh,18px);
-  font-size:clamp(15px,4.2vw,19px);
-  line-height:1.15;
+  margin-top:clamp(9px,1.6vh,14px);
+  font-size:clamp(13px,3.6vw,16px);
+  line-height:1.12;
   font-weight:400;
   color:#16191f;
 }
 
 .pin{
   color:#e53c43;
-  margin-right:9px;
+  margin-right:8px;
 }
 
 @media(max-height:760px){
-  .phone{background-position:center calc(100% - 84px)}
-  .clock{margin-top:clamp(34px,6.3vh,52px)}
-  .date{margin-top:13px}
-  .photo{margin-top:clamp(30px,6vh,46px);width:106px;height:106px}
-  .card{padding:19px 15px 20px}
-  .label{margin-top:10px}
-  .career{margin-top:17px}
-  .campus{margin-top:12px}
+  .phone{background-position:center calc(100% - 72px)}
+  .clock{margin-top:clamp(32px,5.9vh,48px)}
+  .date{margin-top:12px}
+  .photo{margin-top:clamp(27px,5.4vh,42px);width:102px;height:102px}
+  .cloud.one{top:38%}
+  .cloud.two{top:44%}
+  .cloud.three{top:46%}
+  .card{width:92%;padding:15px 13px 16px}
+  .label{margin-top:7px}
+  .career{margin-top:13px}
+  .campus{margin-top:9px}
 }
 
 @media(max-height:650px){
-  .phone{padding-top:10px;background-position:center calc(100% - 68px)}
-  .header{gap:15px}
-  .back{width:34px;height:34px}
-  .title{font-size:25px}
-  .clock{margin-top:22px;font-size:34px;padding:8px 28px;border-radius:11px}
-  .date{margin-top:10px;font-size:15px}
-  .photo{margin-top:22px;width:82px;height:82px}
-  .card{padding:14px 12px 15px;border-radius:14px}
-  .name{font-size:25px;letter-spacing:1px}
-  .label{font-size:13px;margin-top:7px}
-  .value{font-size:16px}
-  .career{font-size:14px;margin-top:11px}
-  .campus{font-size:13px;margin-top:8px}
+  .phone{padding-top:10px;background-position:center calc(100% - 58px)}
+  .header{gap:14px}
+  .back{width:32px;height:32px}
+  .title{font-size:24px}
+  .clock{margin-top:20px;font-size:33px;padding:8px 27px;border-radius:11px}
+  .date{margin-top:9px;font-size:14px}
+  .photo{margin-top:19px;width:78px;height:78px}
+  .cloud.one{top:36%;animation-duration:10s}
+  .cloud.two{top:42%;animation-duration:11s}
+  .cloud.three{top:44%;animation-duration:10s}
+  .card{width:92%;padding:12px 11px 13px;border-radius:12px}
+  .name{font-size:23px;letter-spacing:.9px;font-weight:600}
+  .label{font-size:12px;margin-top:6px}
+  .value{font-size:14px;font-weight:700}
+  .career{font-size:13px;margin-top:10px;font-weight:700}
+  .campus{font-size:12px;margin-top:7px}
 }
 </style>
 </head>
